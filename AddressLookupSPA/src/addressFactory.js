@@ -24,7 +24,6 @@ addressFactory.$inject = ['$http', 'GLOBALS'];
 function addressFactory($http, GLOBALS) {
   var factory = {};
   factory.getAddress = function () {
-    return
     return $http({
       method: 'GET',
       url: GLOBALS.addressUrl

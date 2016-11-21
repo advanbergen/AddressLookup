@@ -8,8 +8,9 @@
   <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
 </head>
 <body>
-  <div >
+  <div>
     <input type="text" ng-model="postcode" class="input-lg" placeholder="postcode" />
+    <button class="btn btn-success" ng-click="addressController.getAddress()">GetAddress</button>
     <h2>Your PostCode: {{postcode}}</h2>
     <h2>Your address:  {{vm.address}}</h2>
   </div>
