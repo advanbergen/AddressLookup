@@ -9,7 +9,7 @@ function addressController(addressFactory) {
       vm.address = address;
     })
     .error(function (err) {
-      alert('Something went wrong in the address lookup!')
+      alert('Something went wrong in the address lookup!');
     });
   }
 }
