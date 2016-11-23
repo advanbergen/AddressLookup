@@ -1,25 +1,78 @@
 ﻿<!DOCTYPE html>
 <html ng-app="ngApp">
 <head>
-  <title>Angular JS Template</title>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <!--<link href="css/bootstrap.css" rel="stylesheet" />
-  <link href="css/styles.css" rel="stylesheet" />-->
-  <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
+    <title>Angular JS Template</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <!--<link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />-->
+    <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
-  <div ng-controller="addressController as vm">
-    <input type="text" ng-model="postcode" class="input-lg" placeholder="postcode" />
-    <button class="btn btn-success" ng-click="vm.getAddress()">GetAddress</button>
-    <h2>Your PostCode: {{postcode}}</h2>
-    <h2>Your address:  {{vm.address}}</h2>
-  </div>
+    <div ng-controller="addressController as vm">
+        <input type="text" ng-model="vm.postcode" class="input-lg" placeholder="postcode" />
+        <input type="text" ng-model="vm.streetnumber" class="input-lg" placeholder="streetnumber" />
+        <button class="btn btn-success" ng-click="vm.getAddress()">GetAddress</button>
+        <h2>Your input: {{vm.postcode}}{{vm.streetnumber}} </h2>
+        <br />
+        <table style="width:50%">
+            <tr>
+                <th>Address</th>
+                <th>&nbsp;</th>
+            </tr>
+            <tr>
+                <td>streetname and number</td>
+                <td>{{vm.address.details[0].street}} {{vm.streetnumber}}</td>
+            </tr>
+            <tr>
+                <td>PostCode</td>
+                <td>{{vm.address.details[0].postcode}}</td>
+            </tr>
+            <tr>
+                <td>city</td>
+                <td>{{vm.address.details[0].city}}</td>
+            </tr>
+            <tr>
+                <td>municipality</td>
+                <td>{{vm.address.details[0].municipality}}</td>
+            </tr>
+            <tr>
+                <td>province</td>
+                <td>{{vm.address.details[0].province}}</td>
+            </tr>
+        </table>
+        <br />
+        <table style="width:500px">
+            <tr>
+                <th>Coordinates</th>
+                <th>&nbsp;</th>
+            </tr>
+            <tr>
+                <td>latitude</td>
+                <td>{{vm.address.details[0].lat}}</td>
+            </tr>
+            <tr>
+                <td>longitude</td>
+                <td>{{vm.address.details[0].lon}}</td>
+            </tr>
+        </table>
+    </div>
 
-  <!-- Scripts below here -->
-  <script src="Scripts/angular.js"></script>
-  <!-- Custom Scripts -->
-  <script src="src/addressController.js"></script>
-  <script src="src/addressFactory.js"></script>
-  <script src="src/ngApp.js"></script>
+    <!-- Scripts below here -->
+    <script src="Scripts/angular.js"></script>
+    <!-- Custom Scripts -->
+    <script src="src/addressController.js"></script>
+    <script src="src/addressFactory.js"></script>
+    <script src="src/ngApp.js"></script>
 </body>
 </html>
