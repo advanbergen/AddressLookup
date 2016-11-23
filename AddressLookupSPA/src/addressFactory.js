@@ -19,14 +19,15 @@
 //  }
  
 
-addressFactory.$inject = ['$http', 'GLOBALS'];
+addressFactory.$inject = ['$http', 'GLOBALS'];//, postcode, streetnumber];
 
-function addressFactory($http, GLOBALS) {
+function addressFactory($http, GLOBALS, postcode, streetnumber) {
   var factory = {};
   factory.getAddress = function () {
+    var combinedUrl = GLOBALS.addressUrl+'?postcode=' + postcode + '&streetnumber=' + streetnumber + '&ref=domeinnaam.nl&type=json';
     return $http({
       method: 'GET',
-      url: GLOBALS.addressUrl
+      url: combinedUrl
     });
   };
   return factory;
