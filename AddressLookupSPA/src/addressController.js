@@ -4,7 +4,7 @@ addressController.$inject = ['addressFactory'];
 function addressController(addressFactory) {
   var vm = this;
   vm.getAddress = function () {
-    addressFactory.getAddress()
+    addressFactory.getAddress(vm.postcode, vm.streetnumber)
     .success(function (address) {
       vm.address = address;
     })
