@@ -10,6 +10,7 @@
         th {
             text-align: left;
         }
+
         td {
             border: 1px solid black;
             border-collapse: collapse;
@@ -19,13 +20,17 @@
     </style>
 </head>
 <body>
-    <div ng-controller="addressController as vm">
+<div ng-controller="addressController as vm">
+    <h2>Please provide your postcode and streetnumber</h2>
+
         <input type="text" ng-model="vm.postcode" class="input-lg" placeholder="postcode" />
         <input type="text" ng-model="vm.streetnumber" class="input-lg" placeholder="streetnumber" />
-        <button class="btn btn-success" ng-click="vm.getAddress()">GetAddress</button>
-        <h2>Your input: {{vm.postcode}}{{vm.streetnumber}} </h2>
-        <br />
-        <table style="width:500px">
+        <div ng-if="!!vm.postcode && !!vm.streetnumber">
+            <h2>Your input: {{vm.postcode}}{{vm.streetnumber}} </h2>
+            <button class="btn btn-success" ng-click="vm.getAddress()">GetAddress</button>
+            <p>
+        </div>
+        <table style="width:500px" ng-if="!!vm.address">
             <tr>
                 <th>Address</th>
                 <th>&nbsp;</th>
@@ -52,7 +57,7 @@
             </tr>
         </table>
         <br />
-        <table style="width:500px">
+        <table style="width:500px" ng-if="!!vm.address">
             <tr>
                 <th>Coordinates</th>
                 <th>&nbsp;</th>
