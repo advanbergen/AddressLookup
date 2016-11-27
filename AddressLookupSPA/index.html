@@ -10,18 +10,25 @@
         th {
             text-align: left;
         }
-
         td {
             border: 1px solid black;
             border-collapse: collapse;
             padding: 5px;
             text-align: left;
         }
+        #map {
+            height: 100%;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
     </style>
 </head>
 <body>
-<div ng-controller="addressController as vm">
-    <h2>Please provide your postcode and streetnumber</h2>
+    <div ng-controller="addressController as vm">
+        <h2>Please provide your postcode and streetnumber</h2>
 
         <input type="text" ng-model="vm.postcode" class="input-lg" placeholder="postcode" />
         <input type="text" ng-model="vm.streetnumber" class="input-lg" placeholder="streetnumber" />
@@ -72,10 +79,14 @@
             </tr>
         </table>
     </div>
+    <div id="map"></div>
 
     <!-- Scripts below here -->
     <script src="Scripts/angular.js"></script>
     <!-- Custom Scripts -->
+    <script src="src/googleMap.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6cczJi1JshCziKDxdQzpLu85ESCGoWVE&callback=initMap" async defer></script>
+
     <script src="src/addressController.js"></script>
     <script src="src/addressFactory.js"></script>
     <script src="src/ngApp.js"></script>
