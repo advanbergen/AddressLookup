@@ -1,4 +1,4 @@
-﻿//(function () {
+﻿(function () {
     addressFactory.$inject = ['$http', 'GLOBALS'];
     function addressFactory($http, GLOBALS) { 
         var factory = {};
@@ -11,7 +11,7 @@
         };
         return factory;
     }
-//})();
+})();
 
 
 //Example url for address lookup:

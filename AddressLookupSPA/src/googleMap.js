@@ -1,4 +1,4 @@
-﻿//(function () {
+﻿(function () {
     var map;
     function initMap() {
 
@@ -7,4 +7,4 @@
             zoom: 7 //17
         });
     }
-//})();
+})();
