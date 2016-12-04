@@ -1,4 +1,4 @@
-﻿(function () {
+﻿//(function () {
     addressFactory.$inject = ['$http', 'GLOBALS'];
     function addressFactory($http, GLOBALS) { 
         var factory = {};
@@ -11,12 +11,11 @@
         };
         return factory;
     }
-})();
+//})();
 
 
 //Example url for address lookup:
 // http://api.postcodedata.nl/v1/postcode/?postcode=4851AH&streetnumber=16&ref=domeinnaam.nl&type=json
-
 //Expected response (json):
 //  {
 //    "status": "ok",
