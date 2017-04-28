@@ -1,17 +1,17 @@
-﻿//(function () {
-    addressFactory.$inject = ['$http', 'GLOBALS'];
-    function addressFactory($http, GLOBALS) { 
-        var factory = {};
-        factory.getAddress = function (postcode, streetnumber) {
-            var combinedUrl = GLOBALS.addressUrl+'?postcode=' + postcode + '&streetnumber=' + streetnumber + '&ref=domeinnaam.nl&type=json';
-            return $http({
-                method: 'GET',
-                url: combinedUrl
-            });
-        };
-        return factory;
-    }
-//})();
+﻿
+addressFactory.$inject = ['$http', 'GLOBALS'];
+function addressFactory($http, GLOBALS) { 
+    var factory = {};
+    factory.getAddress = function (postcode, streetnumber) {
+        var combinedUrl = GLOBALS.addressUrl+'?postcode=' + postcode + '&streetnumber=' + streetnumber + '&ref=domeinnaam.nl&type=json';
+        return $http({
+            method: 'GET',
+            url: combinedUrl
+        });
+    };
+    return factory;
+}
+
 
 
 //Example url for address lookup:
