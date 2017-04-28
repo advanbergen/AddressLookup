@@ -78,16 +78,15 @@
                 <td>{{vm.address.details[0].lon}}</td>
             </tr>
         </table>
-        <googleMap>link({{vm.address.details[0].lat}}, {{vm.address.details[0].lon}})</googleMap>
-        <!--<span googleMap lat="vm.address.details[0].lat" lon="vm.address.details[0].lon"></span>-->
     </div>
-    <!--<div id="map"></div>-->
+    <div id="map"></div>
 
     <!-- Scripts below here -->
     <script src="Scripts/angular.js"></script>
     <!-- Custom Scripts -->
-    <script src="src/googleMapDirective.js"></script>
+    <script src="src/googleMap.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6cczJi1JshCziKDxdQzpLu85ESCGoWVE&callback=initMap" async defer></script>
+
     <script src="src/addressController.js"></script>
     <script src="src/addressFactory.js"></script>
     <script src="src/ngApp.js"></script>

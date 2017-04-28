@@ -2,6 +2,7 @@
 
 addressController.$inject = ['addressFactory']; //, 'googleMap'
 //(function () {
+
     function addressController(addressFactory) {
         var vm = this;
         vm.getAddress = function () {
@@ -14,5 +15,5 @@ addressController.$inject = ['addressFactory']; //, 'googleMap'
             });
         }
     }
-//}());
 
+//}());
