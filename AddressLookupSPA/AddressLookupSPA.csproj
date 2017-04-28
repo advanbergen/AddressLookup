@@ -86,6 +86,8 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="src\addressController.js" />
+    <Content Include="src\googleMapDirective.js" />
+    <Content Include="src\googleMap.js" />
     <Content Include="src\addressFactory.js" />
     <Content Include="src\ngApp.js" />
     <Content Include="Web.config" />
