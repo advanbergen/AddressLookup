@@ -28,15 +28,12 @@
 </head>
 <body>
     <div ng-controller="addressController as vm">
-        <h2>Please provide your postcode and streetnumber</h2>
+        <h2>Provide your postcode/streetnumber:</h2>
 
         <input type="text" ng-model="vm.postcode" class="input-lg" placeholder="postcode" />
         <input type="text" ng-model="vm.streetnumber" class="input-lg" placeholder="streetnumber" />
-        <div ng-if="!!vm.postcode && !!vm.streetnumber">
-            <h2>Your input: {{vm.postcode}}{{vm.streetnumber}} </h2>
-            <button class="btn btn-success" ng-click="vm.getAddress()">GetAddress</button>
-            <p>
-        </div>
+        <button class="btn btn-success" ng-click="vm.getAddress()">GetAddress</button>
+
         <table style="width:500px" ng-if="!!vm.address">
             <tr>
                 <th>Address</th>
