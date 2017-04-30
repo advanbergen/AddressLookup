@@ -26,10 +26,24 @@ function clockController($interval){
 
 function myGoogleMap() {
   var directive = {
-    template: '<div id="map"></div>'
-    //template: '<div>Hello Google Map</div>'
+    template: '<div id="map">Showing on Google Map, latitude:{{vm.latitude}}, longitude:{{vm.longitude}}</div>',
+    controller: googleMapController,
+    controllerAs: 'vm',
+    bindToController: true,
+    scope: {
+      latitude: '@',
+      longitude: '@',
+      zoom: '@'
+    }
   }
   return directive;
+}
+
+function googleMapController() {
+  var vm = this;
+  console.log('latitude:',vm.latitude);
+  console.log('longitude:',vm.longitude);
+  console.log('zoom:',vm.zoom);
 }
 
 // adding <div id="map"></div> to the index.html shows the map with the specified coordinates
