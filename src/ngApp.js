@@ -36,10 +36,11 @@
   }
 })();
 
+var map;
 function initMap() {
     console.log('initMap called');
     map = initMap2(51.09, 5.11, 7);// centraal station utrecht
-    console.log('map is defined:', map);
+    console.log('default map is defined:', map);
 }
 
 // adding <div id="map"></div> to the index.html shows the map with the specified coordinates
