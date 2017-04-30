@@ -1,91 +1,91 @@
 ﻿<!DOCTYPE html>
 <html ng-app="ngApp">
-<head>
-    <title>Angular JS Template</title>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <!--<link href="css/bootstrap.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />-->
-    <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
-    <style>
-        th {
-            text-align: left;
-        }
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 5px;
-            text-align: left;
-        }
-        #map {
-            height: 100%;
-        }
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
-</head>
-<body>
-    <div ng-controller="addressController as vm">
-        <h2>Provide your postcode/streetnumber:</h2>
+    <head>
+        <title>Angular JS Template</title>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <!--<link href="css/bootstrap.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />-->
+        <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
+        <style>
+            th {
+                text-align: left;
+            }
+            td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 5px;
+                text-align: left;
+            }
+            #map {
+                height: 100%;
+            }
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div ng-controller="addressController as vm">
+            <h2>Provide your postcode/streetnumber:</h2>
 
-        <input type="text" ng-model="vm.postcode" class="input-lg" placeholder="postcode" />
-        <input type="text" ng-model="vm.streetnumber" class="input-lg" placeholder="streetnumber" />
-        <button class="btn btn-success" ng-click="vm.getAddress()">GetAddress</button>
+            <input type="text" ng-model="vm.postcode" class="input-lg" placeholder="postcode" />
+            <input type="text" ng-model="vm.streetnumber" class="input-lg" placeholder="streetnumber" />
+            <button class="btn btn-success" ng-click="vm.getAddress()">GetAddress</button>
 
-        <table style="width:500px" ng-if="!!vm.address">
-            <tr>
-                <th>Address</th>
-                <th>&nbsp;</th>
-            </tr>
-            <tr>
-                <td>streetname and number</td>
-                <td>{{vm.address.details[0].street}} {{vm.streetnumber}}</td>
-            </tr>
-            <tr>
-                <td>PostCode</td>
-                <td>{{vm.address.details[0].postcode}}</td>
-            </tr>
-            <tr>
-                <td>city</td>
-                <td>{{vm.address.details[0].city}}</td>
-            </tr>
-            <tr>
-                <td>municipality</td>
-                <td>{{vm.address.details[0].municipality}}</td>
-            </tr>
-            <tr>
-                <td>province</td>
-                <td>{{vm.address.details[0].province}}</td>
-            </tr>
-        </table>
-        <br />
-        <table style="width:500px" ng-if="!!vm.address">
-            <tr>
-                <th>Coordinates</th>
-                <th>&nbsp;</th>
-            </tr>
-            <tr>
-                <td>latitude</td>
-                <td>{{vm.address.details[0].lat}}</td>
-            </tr>
-            <tr>
-                <td>longitude</td>
-                <td>{{vm.address.details[0].lon}}</td>
-            </tr>
-        </table>
-    </div>
-    <div id="map"></div>
+            <table style="width:500px" ng-if="!!vm.address">
+                <tr>
+                    <th>Address</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <tr>
+                    <td>streetname and number</td>
+                    <td>{{vm.address.details[0].street}} {{vm.streetnumber}}</td>
+                </tr>
+                <tr>
+                    <td>PostCode</td>
+                    <td>{{vm.address.details[0].postcode}}</td>
+                </tr>
+                <tr>
+                    <td>city</td>
+                    <td>{{vm.address.details[0].city}}</td>
+                </tr>
+                <tr>
+                    <td>municipality</td>
+                    <td>{{vm.address.details[0].municipality}}</td>
+                </tr>
+                <tr>
+                    <td>province</td>
+                    <td>{{vm.address.details[0].province}}</td>
+                </tr>
+            </table>
+            <br />
+            <table style="width:500px" ng-if="!!vm.address">
+                <tr>
+                    <th>Coordinates</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <tr>
+                    <td>latitude</td>
+                    <td>{{vm.address.details[0].lat}}</td>
+                </tr>
+                <tr>
+                    <td>longitude</td>
+                    <td>{{vm.address.details[0].lon}}</td>
+                </tr>
+            </table> 
+        </div>
+        <div my-clock></div>
+        <div my-google-map></div>
+        <div id="map"></div>
 
-    <!-- Scripts below here -->
-    <script src="Scripts/angular.js"></script>
-    <!-- Custom Scripts -->
-    <script src="src/googleMap.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6cczJi1JshCziKDxdQzpLu85ESCGoWVE&callback=initMap" async defer></script>
-
-    <script src="src/addressController.js"></script>
-    <script src="src/addressFactory.js"></script>
-    <script src="src/ngApp.js"></script>
-</body>
+        <!-- Scripts below here -->
+        <script src="Scripts/angular.js"></script>
+        <!-- Custom Scripts -->
+        <script src="src/addressController.js"></script>
+        <script src="src/addressFactory.js"></script>
+        <script src="src/ngApp.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6cczJi1JshCziKDxdQzpLu85ESCGoWVE&callback=initMap" async defer></script>
+    </body>
 </html>

@@ -1,8 +1,6 @@
 ﻿// controller for address lookup
-
-addressController.$inject = ['addressFactory'];
-
 function addressController(addressFactory) {
+    'nginject'
     var vm = this;
     vm.getAddress = function () {
         addressFactory.getAddress(vm.postcode, vm.streetnumber)

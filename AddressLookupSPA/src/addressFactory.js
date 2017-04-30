@@ -1,6 +1,6 @@
 ﻿
-addressFactory.$inject = ['$http', 'GLOBALS'];
-function addressFactory($http, GLOBALS) { 
+function addressFactory($http, GLOBALS) {
+    'nginject'
     var factory = {};
     factory.getAddress = function (postcode, streetnumber) {
         var combinedUrl = GLOBALS.addressUrl+'?postcode=' + postcode + '&streetnumber=' + streetnumber + '&ref=domeinnaam.nl&type=json';
