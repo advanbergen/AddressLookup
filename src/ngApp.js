@@ -1,60 +1,48 @@
-﻿angular
-  .module('ngApp', [])
-  .directive('myClock', myClock)
-  .directive('myGoogleMap', myGoogleMap)
-  .controller('addressController', addressController)
-  .factory('addressFactory', addressFactory)
-  .constant('GLOBALS', {
-     addressUrl: 'http://api.postcodedata.nl/v1/postcode/'});
+﻿(function(){
+  angular
+    .module('ngApp', [])
+    .directive('myClock', myClock)
+    .directive('myGoogleMap', myGoogleMap)
+    .controller('addressController', addressController)
+    .factory('addressFactory', addressFactory)
+    .constant('GLOBALS', {
+      addressUrl: 'http://api.postcodedata.nl/v1/postcode/'});
 
-function myClock() {
-  var directive = {
-    template: '<h2>{{ vm.time | date: "HH:mm:ss" }}</h2>',
-    controller: clockController,
-    controllerAs: 'vm'
+  function myGoogleMap() {
+    var directive = {
+      template: '<div>Showing on Google Map, latitude:{{vm.latitude}}, longitude:{{vm.longitude}}, zoom:{{vm.zoom}}</div>',
+      controller: googleMapController,
+      controllerAs: 'vm',
+      bindToController: true,
+      scope: {
+        latitude: '@',
+        longitude: '@',
+        zoom: '@'
+      }
+    }
+    return directive;
   }
-  return directive;
-}
 
-function clockController($interval){
-  'nginject'
-  var vm = this;
-  var update=$interval(function () {
-    vm.time = new Date();
-  }, 1000);
-}
-
-function myGoogleMap() {
-  var directive = {
-    template: '<div>Showing on Google Map, latitude:{{vm.latitude}}, longitude:{{vm.longitude}}, zoom:{{vm.zoom}}</div>',
-    controller: googleMapController,
-    controllerAs: 'vm',
-    bindToController: true,
-    scope: {
-      latitude: '@',
-      longitude: '@',
-      zoom: '@'
+  var map;
+  function googleMapController() {
+    var vm = this;
+    console.log('latitude:',vm.latitude);
+    console.log('longitude:',vm.longitude);
+    console.log('zoom:',vm.zoom);
+    if (!!vm.latitude) {
+      console.log('calling initMap2 with new location');
+      initMap2(vm.latitude, vm.longitude, vm.zoom);
     }
   }
-  return directive;
-}
-
-function googleMapController() {
-  var vm = this;
-  console.log('latitude:',vm.latitude);
-  console.log('longitude:',vm.longitude);
-  console.log('zoom:',vm.zoom);
-  if (!!vm.latitude)
-    initMap2(vm.latitude, vm.longitude, vm.zoom);
-}
+})();
 
 function initMap() {
-  console.log('initMap called');
-  initMap2(51.09, 5.11, 7);// centraal station utrecht
+    console.log('initMap called');
+    map = initMap2(51.09, 5.11, 7);// centraal station utrecht
+    console.log('map is defined:', map);
 }
 
 // adding <div id="map"></div> to the index.html shows the map with the specified coordinates
-var map;
 function initMap2(latitude, longitude, zoom) {
     console.log('initMap2 called');
     console.log('initMap2 latitude:',latitude);
@@ -66,5 +54,5 @@ function initMap2(latitude, longitude, zoom) {
         center: { lat: latitude, lng: longitude}, 
         zoom: zoom //17
     });
-    console.log('map is defined:', map);
+    return map;
 }
