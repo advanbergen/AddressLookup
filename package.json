@@ -1,0 +1,21 @@
+{
+  "name": "addresslookup",
+  "version": "1.0.0",
+  "description": "postcode to location",
+  "main": "ngApps.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/advanbergen/AddressLookup.git"
+  },
+  "author": "Ad van Bergen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/advanbergen/AddressLookup/issues"
+  },
+  "homepage": "https://github.com/advanbergen/AddressLookup#readme"
+}
