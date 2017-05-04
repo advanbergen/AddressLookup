@@ -10,7 +10,9 @@
 
   function myGoogleMap() {
     var directive = {
-      template: '<div>Showing on Google Map, latitude:{{vm.latitude}}, longitude:{{vm.longitude}}, zoom:{{vm.zoom}}</div>',
+      template: '<div>Showing on Google Map, latitude:{{vm.latitude}}, longitude:{{vm.longitude}}, zoom:{{vm.zoom}}</div> \
+      <div id="map2"  style="width: 1000px; height: 1000px;" ng-show="vm.latitude">this is my other map</div>',
+      
       controller: googleMapController,
       controllerAs: 'vm',
       bindToController: true,
@@ -23,37 +25,40 @@
     return directive;
   }
 
-  var map;
-  function googleMapController() {
+  function googleMapController($scope) {
     var vm = this;
+    $scope.$watch('vm.latitude', function(newval) { 
+      console.log('watch '+newval);
+      if (!!newval) {
+        console.log('calling initMap2 with new location');
+        var map = initMap2('map2', vm.latitude, vm.longitude, vm.zoom);
+        console.log('my new map', map);
+        map.zoom = 7;
+      }
+    });
+
     console.log('latitude:',vm.latitude);
     console.log('longitude:',vm.longitude);
     console.log('zoom:',vm.zoom);
-    if (!!vm.latitude) {
-      console.log('calling initMap2 with new location');
-      initMap2(vm.latitude, vm.longitude, vm.zoom);
-    }
+
   }
-})();
-
-var map;
-function initMap() {
-    console.log('initMap called');
-    map = initMap2(51.09, 5.11, 7);// centraal station utrecht
-    console.log('default map is defined:', map);
-}
-
-// adding <div id="map"></div> to the index.html shows the map with the specified coordinates
-function initMap2(latitude, longitude, zoom) {
+  googleMapController.prototype.$inject = ['$scope'];
+   
+  // adding <div id="map"></div> to the index.html shows the map with the specified coordinates
+  function initMap2(id, latitude, longitude, zoom) {
     console.log('initMap2 called');
     console.log('initMap2 latitude:',latitude);
     console.log('initMap2 longitude:',longitude);
     console.log('initMap2 zoom:',zoom);
 
-    map = new google.maps.Map(document.getElementById('map'), {
+    var map = new google.maps.Map(document.getElementById(id), {
         // center: { lat: 	51.5512518032450, lng: 4.7998622348226 }, // Rooiakker 16, Ulvenhout 
-        center: { lat: latitude, lng: longitude}, 
-        zoom: zoom //17
+        center: { lat: parseFloat(latitude), lng: parseFloat(longitude)}, 
+        zoom: parseInt(zoom) //17
     });
     return map;
-}
+  }
+
+})();
+
+
